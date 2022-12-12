@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import useMovie from '../Context/MovieContext'
-function WatchedList() {
+function WatchedListCom() {
     const {favoriteList,WatchedList ,deleteFromWatched,addToFavorite} = useMovie()
     const [disabled,setDisabled]= useState(false)
     const deleteFwatched = (index) => {
@@ -31,4 +31,4 @@ function WatchedList() {
   )
 }
 
-export default WatchedList
+export default WatchedListCom

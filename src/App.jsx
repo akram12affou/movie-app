@@ -6,11 +6,19 @@ import Navbar from './Components/Navbar';
 import { Routes , Route} from 'react-router-dom'
 import MovieListCom from './Components/MovieListCom';
 import FavoriteListCom from './Components/FavoriteListCom';
-import WatchedList from './Components/WatchedList';
+import WatchedListCom from './Components/WatchedListCom';
+import useMovie from './Context/MovieContext';
 function App() {
+  const {favoriteList,WatchedList} = useMovie()
   
 
+  useEffect(() => {
+      window.localStorage.setItem('favorite',JSON.stringify(favoriteList))
+  },[favoriteList])
   
+  useEffect(() => {
+    window.localStorage.setItem('watched',JSON.stringify(WatchedList))
+},[WatchedList])
   
     
   
@@ -22,10 +30,11 @@ function App() {
   return (
     <div>
       <Navbar/>
+      
     <Routes>
      <Route element={<MovieListCom/>} path="/"></Route>
      <Route element={<FavoriteListCom/>} path="/favorite"></Route>
-     <Route element={<WatchedList/>} path="/watched"></Route>
+     <Route element={<WatchedListCom/>} path="/watched"></Route>
      </Routes>
     
     </div>

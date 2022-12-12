@@ -1,6 +1,6 @@
 export const initialState = {
-    favoriteList: [],
-    WatchedList: [],
+    favoriteList: JSON.parse(window.localStorage.getItem('favorite')) ? JSON.parse(window.localStorage.getItem('favorite')) : []   ,
+    WatchedList: JSON.parse(window.localStorage.getItem('watched')) ? JSON.parse(window.localStorage.getItem('watched')) : []  ,
     MovieList :[]
   };
   
