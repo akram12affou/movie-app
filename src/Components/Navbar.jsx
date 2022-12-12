@@ -1,10 +1,13 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 function Navbar() {
   return (
     <div>
-        <button>watched List</button>
-        <button>You Favorite Movies</button>
+      <Link to=''><button>Home</button></Link>
+      <Link to='watched'><button>watched List</button></Link>
+      <Link to='favorite'><button>You Favorite Movies</button></Link>
+        
+        
     </div>
   )
 }
