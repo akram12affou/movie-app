@@ -10,23 +10,12 @@ import WatchedListCom from './Components/WatchedListCom';
 import useMovie from './Context/MovieContext';
 function App() {
   const {favoriteList,WatchedList} = useMovie()
-  
-
-  useEffect(() => {
+useEffect(() => {
       window.localStorage.setItem('favorite',JSON.stringify(favoriteList))
   },[favoriteList])
-  
   useEffect(() => {
     window.localStorage.setItem('watched',JSON.stringify(WatchedList))
 },[WatchedList])
-  
-    
-  
- 
-    
-
-
-  
   return (
     <div>
       <Navbar/>

@@ -15,6 +15,7 @@ function WatchedListCom() {
     }
   return (
     <div>
+         {WatchedList.length} <span>Movie{WatchedList.length > 1 && 's'}</span>
          {WatchedList.length == 0 && <p> no Watched movie added yet</p>}
         {WatchedList.map((e,index) => {
             return (
