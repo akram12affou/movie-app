@@ -8,6 +8,7 @@ import MovieListCom from './Components/MovieListCom';
 import FavoriteListCom from './Components/FavoriteListCom';
 import WatchedListCom from './Components/WatchedListCom';
 import useMovie from './Context/MovieContext';
+import MovieDetails from './Components/MovieDetails';
 function App() {
   const {favoriteList,WatchedList} = useMovie()
 useEffect(() => {
@@ -19,8 +20,8 @@ useEffect(() => {
   return (
     <div>
       <Navbar/>
-      
     <Routes>
+     <Route element={<MovieDetails/>} path="/movie/:id"></Route>
      <Route element={<MovieListCom/>} path="/"></Route>
      <Route element={<FavoriteListCom/>} path="/favorite"></Route>
      <Route element={<WatchedListCom/>} path="/watched"></Route>

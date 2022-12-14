@@ -5,9 +5,7 @@ function Navbar() {
     <div>
       <Link to=''><button>Home</button></Link>
       <Link to='watched'><button>watched List</button></Link>
-      <Link to='favorite'><button>You Favorite Movies</button></Link>
-        
-        
+      <Link to='favorite'><button>You Favorite Movies</button></Link>    
     </div>
   )
 }

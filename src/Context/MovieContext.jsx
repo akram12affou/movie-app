@@ -21,7 +21,6 @@ export const MoiveProvider = ({ children }) => {
             }
         });
         };
-
       const deleteFromWatched = (id) => {
         dispatch({
           type: "DELETE_FROM_WATCHED",
@@ -46,8 +45,6 @@ export const MoiveProvider = ({ children }) => {
             }
         });
         };
-
-
   const value = {
     favoriteList: state.favoriteList,
     WatchedList: state.WatchedList,
