@@ -5,6 +5,7 @@ function Navbar() {
     <div>
         <Link to='/Watched'><button>Watched List</button></Link>
         <Link to='/'><button>Search</button></Link>
+        <Link to='/topmovies'><button>Top Movies</button></Link>
         
     </div>
   )

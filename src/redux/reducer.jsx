@@ -7,7 +7,9 @@ export default (state = initialState, { type, payload }) => {
 
   case 'first':
     return { ...state,WatchedList:[...state.WatchedList , payload] }
-
+    case 'remove':
+      return { ...state }
+  
   default:
     return state
   }

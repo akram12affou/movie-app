@@ -1,9 +1,11 @@
 import React, { useState,useEffect } from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 function MovieSearch() {
-  const WatchedList = useSelector((state) => state.WatchedList )
-  const dispatch = useDispatch()
+    const WatchedList = useSelector((state) => state.WatchedList )
+    const dispatch = useDispatch()
+    const [loading,setLoading] = useState(false)
     const [movieList,setMovieList] = useState([])
     const [query,setQuery] = useState('')
     const [adult,setAdult] = useState(false)
@@ -14,8 +16,10 @@ function MovieSearch() {
         setMovieList([])
         return;
       }
+       setLoading(true)
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_KEY}&language=en-US&page=${page}&include_adult=${adult}&query=${query}`)
         .then((res) => setMovieList(res.data.results))
+        .then((res) => setLoading(false))
         .catch(err => console.log(err))
         }, [query, page, adult]) 
        
@@ -53,19 +57,20 @@ function MovieSearch() {
         <label>Search a Movie</label>
         <input type="text" value={query} onChange={e => setQuery(e.target.value)}/>
         +18 : <input type="checkbox" value={adult} onChange={() => handleAdultContent()}/>
-        {movieList.map((e) => {
+        {loading ? <>Loading...</> : <>{movieList.map((e) => {
           return(
             <div key={e.id}>
               <span>{e.original_title}</span>
               <br />
               <span>{e.overview}</span>
               <br />
-             
+              <Link  to={`movie/${e.id}`}><button>Details</button></Link>
               <button onClick={() => dispatch({type:'first',payload:e})} disabled={ handledisable(e)}>Add to Watched List </button>
               <hr />
             </div>
           )
-        })}
+        })}</>}
+       
        <button onClick={() => handlebutton('-')} disabled={page==1}>-</button> {page} <button onClick={() => handlebutton('+')} >+</button>
     </div>
   )
