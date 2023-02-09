@@ -15,18 +15,21 @@
     flex-direction: row;
     align-items:center;
     flex-wrap: wrap;
-    gap:1rem;
-    justify-content: center;
+    
+    justify-content: space-evenly;
 }
 .movie{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border: 1px solid black;
     border-radius: 1%;
    width:30vw;
-   height:100vh;
+   height: 90vh;
+   margin:0.5rem;
+   padding: 0.5rem;
+   background-color: rgb(227, 231, 255);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 img{
@@ -43,4 +46,35 @@ img{
 }
 .title{
     font-weight: bolder;
+    font-size: calc(1rem + 0.5vw);
 }
+.input-search{
+    padding: 0.1rem;
+   
+    
+}
+
+    .add{
+        cursor: pointer;
+        background-color: inherit;
+        border:none;
+        padding: 0.3rem;
+        transition: all 0.2s ease;
+        font-weight: bolder;
+        color: rgba(0, 0, 0);
+    }
+  
+    .details{
+        
+        cursor: pointer;
+        background-color: inherit;
+        border:none;
+        padding: 0.3rem;
+        transition: all 0.2s ease;
+        font-weight: bolder;
+        color: rgba(0, 0, 0);
+    }
+    .details:hover{
+        color: black;
+        transform: scale(1.1);
+    }

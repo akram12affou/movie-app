@@ -15,29 +15,36 @@ function TopMovies() {
       )
       .then((res) => setMovies(res.data.results));
   }, []);
+  console.log(movies)
   return (
-    <div>
-      {movies?.map((e) => {
-        return (
-          <main key={e.id}>
-            <span>{e.original_title}</span>
-            <br />
-            <span>{e.overview}</span>
-            <br />
-            <button
-              onClick={() => dispatch({ type: "first", payload: e })}
-              disabled={WatchedList.find(item => e.id == item.id)?true:false}
-            >
-              Add to Watched List{" "}
-            </button>
-            <hr />
-
-            <br />
-          </main>
-        );
-      })}
+    
+        <div class="movies-container">
+          {movies.map((e) => {
+            return (
+              <div class='movie' key={e.id}>
+                <span class='title'>{e.original_title}</span>
+                <img  src={`https://image.tmdb.org/t/p/w300${e.poster_path}`} alt={e.title} />
+                <br />
+                <span>{e.overview.substring(0,200)} {e.overview.length>200 ? '...' : ''}</span>
+                <br />
+                <div>
+                 rating : {e.vote_average}
+                </div>
+                <button
+                  onClick={() => dispatch({ type: "first", payload: e })}
+                  disabled={
+                    WatchedList.find((item) => e.id == item.id) ? true : false
+                  }
+                >
+                  Add to Watched List{" "}
+                </button>
+                
+              </div>
+            );
+          })}
     </div>
   );
 }
+
 
 export default TopMovies;

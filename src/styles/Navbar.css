@@ -8,7 +8,8 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background: #ffa8a8;
+    background: #032541;
+    color: white;
    
 
 }
@@ -17,22 +18,25 @@
     font-size: 25px;
     height: 35px;
 }
-div button{
+div .button{
     cursor: pointer;
     background-color: inherit;
     border:none;
     padding: 0.3rem;
     transition: all 0.2s ease;
     font-weight: bolder;
+    color: rgba(255, 255, 255, 0.703);
 }
-div button:hover{
+div .button:hover{
     text-decoration: underline;
     letter-spacing: 1px;
+    color: white;
 }
 .buttons{
    width: 40vw;
    display: flex;
    justify-content: space-evenly;
+   
 }
 .humburger{
     display: none;
@@ -51,8 +55,11 @@ align-items: center;
 top:35px;
 width: 30vw;
 height: 30vh;
-color: black;
-background: #ffa8a8;
+
+background: #032541;
+}
+h1 span{
+    color:#50c2bf;
 }
 @media screen and (max-width :768px) {
     .buttons{

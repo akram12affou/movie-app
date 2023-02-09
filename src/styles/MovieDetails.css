@@ -1,0 +1,13 @@
+.Movie-details{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.moviedetails-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 25vw;
+    height: 25vh; */
+    height: calc(100vh - 35px);
+
+}

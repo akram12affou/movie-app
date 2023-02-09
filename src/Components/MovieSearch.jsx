@@ -52,11 +52,12 @@ function MovieSearch() {
       <div class="params">
         <div>
           <label>Search a Movie : </label>
-          <input type="text" value={query} onChange={(e) => handleTyping(e)} />
+          <input class="input-search" type="text" value={query} onChange={(e) => handleTyping(e)} />
         </div>
         <div>
           +18 :{" "}
           <input
+            
             type="checkbox"
             value={adult}
             onChange={() => handleAdultContent()}
@@ -78,9 +79,14 @@ function MovieSearch() {
                 <span>{e.overview.substring(0,200)} {e.overview.length>200 ? '...' : ''}</span>
                 <br />
                 <Link to={`movie/${e.id}`}>
-                  <button>Details</button>
+                  <button 
+                  class='details'>Details</button>
                 </Link>
                 <button
+                 class='add'
+                 style={{
+                  textDecoration:WatchedList.find((item) => e.id == item.id) && 'line-through'
+                 }}
                   onClick={() => dispatch({ type: "first", payload: e })}
                   disabled={
                     WatchedList.find((item) => e.id == item.id) ? true : false
