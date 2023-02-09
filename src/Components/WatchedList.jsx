@@ -1,10 +1,11 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 function WatchedList() {
   const watchedList = useSelector(state => state.WatchedList)
   console.log(watchedList)
-  const handleRemove = () => {
-
+  const dispatch = useDispatch()
+  const handleRemove = (e) => {
+      dispatch({type: 'remove',payload:e})
   }
   return (
     <div>{watchedList.map(e=> {

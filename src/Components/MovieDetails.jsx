@@ -19,7 +19,7 @@ function MovieDetails() {
     console.log(movie)
   return (
     <div>
-        fffffffffffffffffffffffffffffff
+      
         {loading ? <p>loading...</p> : 
         <>
         {[movie]?.map((e) => {

@@ -39,19 +39,6 @@ function MovieSearch() {
       const handleAdultContent = () => {
         setAdult(!adult)
       }
-      const handledisable = (item) => {
-        
-        let state = false;
-        for(let i=0;WatchedList.length> i;i++){
-          if(WatchedList[i]== item) {
-            state = true
-          }
-        }
-       
-         return state;
-   
-      }
-      console.log(WatchedList)
   return (
     <div>
         <label>Search a Movie</label>
@@ -65,7 +52,7 @@ function MovieSearch() {
               <span>{e.overview}</span>
               <br />
               <Link  to={`movie/${e.id}`}><button>Details</button></Link>
-              <button onClick={() => dispatch({type:'first',payload:e})} disabled={ handledisable(e)}>Add to Watched List </button>
+              <button onClick={() => dispatch({type:'first',payload:e})} disabled={WatchedList.find(item => e.id == item.id)?true:false}>Add to Watched List </button>
               <hr />
             </div>
           )
