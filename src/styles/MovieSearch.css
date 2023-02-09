@@ -1,0 +1,46 @@
+.params{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5vh;
+    align-items: center;
+}
+.pages{
+    position: absolute;
+    left:50%
+}
+.movies-container{
+    margin-top: 1rem;
+    min-height: calc(100vh - 130px);
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    flex-wrap: wrap;
+    gap:1rem;
+    justify-content: center;
+}
+.movie{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 1%;
+   width:30vw;
+   height:100vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+img{
+    border-radius: 5%;
+    width: 20vw;
+    background-size: cover;
+}
+.loadingSpinner-container{
+    height: calc(100vh - 130px);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    font-weight: bolder;
+}
