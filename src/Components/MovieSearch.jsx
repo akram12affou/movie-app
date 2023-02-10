@@ -49,7 +49,9 @@ function MovieSearch() {
   };
   return (
     <div>
+      
       <div class="params">
+        
         <div>
           <label>Search a Movie : </label>
           <input class="input-search" type="text" value={query} onChange={(e) => handleTyping(e)} />
@@ -63,7 +65,14 @@ function MovieSearch() {
             onChange={() => handleAdultContent()}
           />
         </div>
+        
       </div>
+      {query.length !== 0 && <div class="pages">
+        <button onClick={() => handlebutton("-")} disabled={page == 1}>
+          -
+        </button>{" "}
+        {page} <button onClick={() => handlebutton("+")}>+</button>
+      </div>}
       {loading ? (
         <div class='loadingSpinner-container'>
         <Loadingspinner />
@@ -100,12 +109,7 @@ function MovieSearch() {
           })}
         </div>
       )}
-      <div class="pages">
-        <button onClick={() => handlebutton("-")} disabled={page == 1}>
-          -
-        </button>{" "}
-        {page} <button onClick={() => handlebutton("+")}>+</button>
-      </div>
+      
     </div>
   );
 }

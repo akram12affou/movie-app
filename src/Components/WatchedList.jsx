@@ -11,6 +11,7 @@ function WatchedList() {
   return (
     <div>
              <div className="movies-container">
+              {watchedList.length == 0 && <h2>No movie found  .</h2>}
           {watchedList.map((e) => {
             return (
               <div class='movie' key={e.id}>
