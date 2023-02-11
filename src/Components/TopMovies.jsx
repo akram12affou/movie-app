@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 function TopMovies() {
   const dispatch = useDispatch();
   const WatchedList = useSelector((state) => state.WatchedList);
@@ -15,9 +14,7 @@ function TopMovies() {
       )
       .then((res) => setMovies(res.data.results));
   }, []);
-  console.log(movies)
   return (
-    
         <div class="movies-container">
           {movies.map((e) => {
             return (
@@ -38,7 +35,6 @@ function TopMovies() {
                 >
                   Add to Watched List{" "}
                 </button>
-                
               </div>
             );
           })}

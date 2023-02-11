@@ -46,3 +46,8 @@ gap:1rem;
   cursor: pointer;
   font-weight: bold;
 }
+.reviews{
+  border: 1px solid black;
+  border-radius: 3%;
+  padding: 10px;
+}

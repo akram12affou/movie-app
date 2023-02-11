@@ -5,15 +5,19 @@ import axios from "axios";
 import "../styles/MovieDetails.css";
 import { useParams } from "react-router-dom";
 import Loadingspinner from "./Loadingspinner";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Fragment } from "react";
 function MovieDetails() {
+  const dispatch = useDispatch();
+  const WatchedList = useSelector((state) => state.WatchedList);
   const REACT_APP_TMDB_KEY = "4a16a312cc25534aac7bab9f0901fa3b";
   const [movie, setMovie] = useState([]);
-  const [number,setNumber] = useState(4)
+  const [number, setNumber] = useState(4);
+  const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [similarMovies,setSimilarMovies] = useState([])
+  const [similarMovies, setSimilarMovies] = useState([]);
   const { id } = useParams();
-  console.log(id);
   useEffect(() => {
     setLoading(true);
     axios
@@ -23,23 +27,34 @@ function MovieDetails() {
       .then((res) => setMovie(res.data))
       .then((res) => setLoading(false))
       .catch((err) => console.log(err));
-
-      axios
+    axios
       .get(
+        // https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=<<api_key>>&language=en-US&page=1
         `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${REACT_APP_TMDB_KEY}&language=en-US&page=1`
       )
       .then((res) => setSimilarMovies(res.data.results))
       .catch((err) => console.log(err));
-  }, []);
- const handleRoute = (e) =>{
-  //  window.location.href = `http://${window.location.hostname}/movie/${e.id}`
-  console.log(window.location)
- }
+
+    // https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
+    axios
+      .get(
+        // https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=<<api_key>>&language=en-US&page=1
+        `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${REACT_APP_TMDB_KEY}&language=en-US&page=1`
+      )
+      .then((res) => setReviews(res.data.results))
+      .catch((err) => console.log(err));
+  }, [id]);
+  
+  //  const handleRoute = (e) =>{
+  //   //  window.location.href = `http://${window.location.hostname}/movie/${e.id}`
+  //   console.log(window.location)
+  // //  }
+  // console.log(similarMovies);
   return (
     <div>
       {loading ? (
-        <div class='loadingSpinner-container'>
-        <Loadingspinner/>
+        <div class="loadingSpinner-container">
+          <Loadingspinner />
         </div>
       ) : (
         <>
@@ -60,36 +75,73 @@ function MovieDetails() {
                   <p>language : {e.original_language}</p>
                   <p>runtime : {e.runtime} min</p>
                   <a href={e.homepage}>home page</a>
+                  <button
+                    onClick={() => dispatch({ type: "first", payload: e })}
+                    disabled={
+                      WatchedList.find((item) => e.id == item.id) ? true : false
+                    }
+                  >
+                    add to watch List
+                  </button>
                 </div>
               </div>
             );
           })}
         </>
       )}
-      <h2>Similar Movies -> </h2>
-      <div className="similarmovie-container">
-      {similarMovies.slice(0,number)?.map((e,i) => {
-        return(
+    {reviews.length !==0 && <>  <h2>Reviews -{">"} </h2>
+      {reviews.map((e) => {
+        return (
           <>
-          <div class='similarmovie'>
-          
-          <span class='title'>{e.original_title}</span>
-          
-          <img class='similarmovie-img' src={`https://image.tmdb.org/t/p/w300${e.poster_path}`} alt={e.title} />
-         language : {e.original_language}
-         <Link path={'55'}></Link>
-                  <button onClick={}
-                  class='details'>Details</button>
-          
-          </div>
-          {number-1 == i && number==4  && <span className="see" onClick={() => setNumber(20)}>See More...</span>}
-          {number-1 == i && number==20  && <span className="see" onClick={() => setNumber(4)}>...See Less</span>}
-          
+          <div class='reviews'>
+            {/* {JSON.stringify(e)} */}
+            <img src={e.author_details.avatar_path?.slice(1)} alt="" /><h3>{e.author_details.username} :</h3>
+            
+           
+            <span>{e.content}</span>
+            <br />
+            <h5>Created at : <span>{e.created_at}</span></h5>
+            
+            </div>
           </>
-        )
+        );
       })}
-      </div>
-      
+      </>}
+      {similarMovies.length !== 0 && (
+        <>
+          <h2>Similar Movies -{">"} </h2>
+          <div className="similarmovie-container">
+            {similarMovies.slice(0, number)?.map((e, i) => {
+              return (
+                <Fragment key={i}>
+                  <div class="similarmovie">
+                    <span class="title">{e.original_title}</span>
+                    <img
+                      class="similarmovie-img"
+                      src={`https://image.tmdb.org/t/p/w300${e.poster_path}`}
+                      alt={e.title}
+                    />
+                    language : {e.original_language}
+                    <Link to={`/movie/${e.id}`}>
+                      <button class="details">Details</button>
+                    </Link>
+                  </div>
+                  {number - 1 == i && number == 4 && (
+                    <span className="see" onClick={() => setNumber(20)}>
+                      See More...
+                    </span>
+                  )}
+                  {number - 1 == i && number == 20 && (
+                    <span className="see" onClick={() => setNumber(4)}>
+                      ...See Less
+                    </span>
+                  )}
+                </Fragment>
+              );
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 }
