@@ -10,13 +10,13 @@
     justify-content: space-evenly;
     background: #032541;
     color: white;
-   
+    height: 60px;
 
 }
 .header h1{
     margin-right: 20vw;
     font-size: 25px;
-    height: 35px;
+    height: 40px;
 }
 div .button{
     cursor: pointer;
@@ -52,9 +52,9 @@ flex-direction: column;
 justify-content: space-evenly;
 align-items: center;
 
-top:35px;
-width: 30vw;
-height: 30vh;
+top:60px;
+width: 40vw;
+height: 75vh;
 
 background: #032541;
 }

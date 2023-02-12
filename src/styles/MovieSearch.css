@@ -25,10 +25,10 @@
     align-items: center;
     border: 1px solid black;
     border-radius: 1%;
-   width:30vw;
-   height: fit-content;
+   width:28vw;
+   height: 900px;
    margin:0.5rem;
-   padding: 0.5rem;
+   padding: 0.1rem;
    background-color: rgb(227, 231, 255);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -78,3 +78,22 @@ img{
         color: black;
         transform: scale(1.1);
     }
+    @media screen and (max-width :768px) {
+        .movie{
+    
+ 
+           width:60vw;
+
+        }
+        
+    }
+.pages button{
+    background: #032541;
+    color:white;
+    padding: 1px;
+    border-radius: 10%;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px;
+    
+}

@@ -47,7 +47,21 @@ gap:1rem;
   font-weight: bold;
 }
 .reviews{
-  border: 1px solid black;
-  border-radius: 3%;
+  /* border: 1px solid black; */
+  border-radius: 1%;
   padding: 10px;
+  width: 90vw;
+  
+  margin: 0 auto;
+}
+.img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+ 
+}
+.cont{
+  display: flex;
+  align-items: center;
 }

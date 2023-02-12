@@ -68,11 +68,12 @@ function MovieSearch() {
         
       </div>
       {query.length !== 0 && <div class="pages">
-        <button onClick={() => handlebutton("-")} disabled={page == 1}>
+        <button class='minus-button' onClick={() => handlebutton("-")}  disabled={page == 1}>
           -
         </button>{" "}
         {page} <button onClick={() => handlebutton("+")}>+</button>
       </div>}
+   
       {loading ? (
         <div class='loadingSpinner-container'>
         <Loadingspinner />

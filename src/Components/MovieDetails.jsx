@@ -29,27 +29,20 @@ function MovieDetails() {
       .catch((err) => console.log(err));
     axios
       .get(
-        // https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=<<api_key>>&language=en-US&page=1
         `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${REACT_APP_TMDB_KEY}&language=en-US&page=1`
       )
       .then((res) => setSimilarMovies(res.data.results))
       .catch((err) => console.log(err));
 
-    // https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
     axios
       .get(
-        // https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=<<api_key>>&language=en-US&page=1
         `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${REACT_APP_TMDB_KEY}&language=en-US&page=1`
       )
       .then((res) => setReviews(res.data.results))
       .catch((err) => console.log(err));
   }, [id]);
-  
-  //  const handleRoute = (e) =>{
-  //   //  window.location.href = `http://${window.location.hostname}/movie/${e.id}`
-  //   console.log(window.location)
-  // //  }
-  // console.log(similarMovies);
+
+
   return (
     <div>
       {loading ? (
@@ -89,24 +82,36 @@ function MovieDetails() {
           })}
         </>
       )}
-    {reviews.length !==0 && <>  <h2>Reviews -{">"} </h2>
-      {reviews.map((e) => {
-        return (
-          <>
-          <div class='reviews'>
-            {/* {JSON.stringify(e)} */}
-            <img src={e.author_details.avatar_path?.slice(1)} alt="" /><h3>{e.author_details.username} :</h3>
-            
-           
-            <span>{e.content}</span>
-            <br />
-            <h5>Created at : <span>{e.created_at}</span></h5>
-            
-            </div>
-          </>
-        );
-      })}
-      </>}
+      {reviews.length !== 0 && (
+        <>
+          {" "}
+          <h2>Reviews -{">"} </h2>
+          {reviews.map((e) => {
+            return (
+              <>
+                <div class="reviews">
+                  {/* {JSON.stringify(e)} */}
+                  <div class="cont">
+                    <img
+                      class="img"
+                      src={e.author_details.avatar_path?.slice(1)}
+                      alt=""
+                    />{" "}
+                    <h3> {e.author_details.username} :</h3>
+                  </div>
+
+                  <span>{e.content}</span>
+                  <br />
+                  <h5>
+                    Created at : <span>{e.created_at}</span>
+                  </h5>
+                </div>
+                <hr />
+              </>
+            );
+          })}
+        </>
+      )}
       {similarMovies.length !== 0 && (
         <>
           <h2>Similar Movies -{">"} </h2>

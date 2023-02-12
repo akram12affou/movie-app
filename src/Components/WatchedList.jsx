@@ -9,8 +9,8 @@ function WatchedList() {
       dispatch({type: 'remove',payload:e})
   }
   return (
-    <div>
-             <div className="movies-container">
+    <div className='watchedList'>
+             <div className="watchedList-container">
               {watchedList.length == 0 && <h2>No movie found  .</h2>}
           {watchedList.map((e) => {
             return (
