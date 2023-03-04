@@ -67,8 +67,8 @@ function MovieDetails() {
                 
                 <div class="moviedetails-img">
                   <div>
-                  <h2>{e.original_title}</h2>
-                 <center><img
+                 <center> <h2>{e.original_title}</h2>
+                 <img
                     src={`https://image.tmdb.org/t/p/w300${e.poster_path}`}
                     alt=""
                   /></center> 
