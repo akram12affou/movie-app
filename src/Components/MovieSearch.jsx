@@ -49,54 +49,56 @@ function MovieSearch() {
   };
   return (
     <div>
-      
       <div class="params">
-        
         <div>
           <label>Search a Movie : </label>
-          <input class="input-search" type="text" value={query} onChange={(e) => handleTyping(e)} />
+          <input
+            class="input-search"
+            type="text"
+            value={query}
+            onChange={(e) => handleTyping(e)}
+          />
         </div>
         <div>
           +18 :{" "}
           <input
-            
             type="checkbox"
             value={adult}
             onChange={() => handleAdultContent()}
           />
         </div>
-        
       </div>
-      {query.length !== 0 && <div class="pages">
-        <button class='minus-button' onClick={() => handlebutton("-")}  disabled={page == 1}>
-          -
-        </button>{" "}
-        {page} <button onClick={() => handlebutton("+")}>+</button>
-      </div>}
-   
+
       {loading ? (
-        <div class='loadingSpinner-container'>
-        <Loadingspinner />
+        <div class="loadingSpinner-container">
+          <Loadingspinner />
         </div>
       ) : (
         <div className="movies-container">
           {movieList.map((e) => {
             return (
-              <div class='movie' key={e.id}>
-                <span class='title'>{e.original_title}</span>
-                <img  src={`https://image.tmdb.org/t/p/w300${e.poster_path}`} alt={e.title} />
+              <div class="movie" key={e.id}>
+                <span class="title">{e.original_title}</span>
+                <img
+                  src={`https://image.tmdb.org/t/p/w300${e.poster_path}`}
+                  alt={e.title}
+                />
                 <br />
-                <span>{e.overview.substring(0,200)} {e.overview.length>200 ? '...' : ''}</span>
+                <span>
+                  {e.overview.substring(0, 200)}{" "}
+                  {e.overview.length > 200 ? "..." : ""}
+                </span>
                 <br />
                 <Link to={`movie/${e.id}`}>
-                  <button 
-                  class='details'>Details</button>
+                  <button class="details">Details</button>
                 </Link>
                 <button
-                 class='add'
-                 style={{
-                  textDecoration:WatchedList.find((item) => e.id == item.id) && 'line-through'
-                 }}
+                  class="add"
+                  style={{
+                    textDecoration:
+                      WatchedList.find((item) => e.id == item.id) &&
+                      "line-through",
+                  }}
                   onClick={() => dispatch({ type: "first", payload: e })}
                   disabled={
                     WatchedList.find((item) => e.id == item.id) ? true : false
@@ -104,13 +106,26 @@ function MovieSearch() {
                 >
                   Add to Watched List{" "}
                 </button>
-                
               </div>
             );
           })}
+          
         </div>
       )}
-      
+      <br />
+      {query.length !== 0 && (
+        <div class="pages">
+          <button
+            class="minus-button"
+            onClick={() => handlebutton("-")}
+            disabled={page == 1}
+          >
+            -
+          </button>{" "}
+          {page} <button onClick={() => handlebutton("+")}>+</button>
+        </div>
+      )}
+      <br />
     </div>
   );
 }

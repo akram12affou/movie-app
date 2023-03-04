@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/Navbar.css'
 function Navbar() {
-  const [open,setOpen] = useState(false)
+  const [open,setOpen] = useState(true)
   const css = `.humburger-menu{
     display:none;
   }

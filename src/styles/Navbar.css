@@ -51,10 +51,10 @@ right:0;
 flex-direction: column;
 justify-content: space-evenly;
 align-items: center;
-
+z-index: 100;
 top:60px;
-width: 40vw;
-height: 75vh;
+width: 45vw;
+height: 80vh;
 
 background: #032541;
 }

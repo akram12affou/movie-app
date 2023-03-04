@@ -5,9 +5,12 @@
     align-items: center;
 }
 .pages{
-    position: absolute;
-    left:50%
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
+
 .movies-container{
     margin-top: 1rem;
     min-height: calc(100vh - 130px);
@@ -21,20 +24,21 @@
 .movie{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
     border: 1px solid black;
-    border-radius: 1%;
+    border-radius: 2px;
    width:28vw;
-   height: 900px;
+   height: fit-content;
    margin:0.5rem;
    padding: 0.1rem;
    background-color: rgb(227, 231, 255);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 img{
-    border-radius: 5%;
-    width: 20vw;
+    border-radius: 2%;
+    width: 80%;
+    max-width: 350px;
     background-size: cover;
 }
 .loadingSpinner-container{
@@ -49,7 +53,7 @@ img{
     font-size: calc(1rem + 0.5vw);
 }
 .input-search{
-    padding: 0.1rem;
+    padding: 0.4rem;
    
     
 }
