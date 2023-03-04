@@ -64,14 +64,18 @@ function MovieDetails() {
           {[movie]?.map((e) => {
             return (
               <div class="Movie-details">
+                
                 <div class="moviedetails-img">
-                  <img
+                  <div>
+                  <h2>{e.original_title}</h2>
+                 <center><img
                     src={`https://image.tmdb.org/t/p/w300${e.poster_path}`}
                     alt=""
-                  />
+                  /></center> 
+                  </div>
                 </div>
                 <div class="moviedetails-details">
-                  <h1>{e.original_title}</h1>
+                  
                   <br />
                  <div className="overview">Overview :</div><span>{e.overview}</span>
                   <span>average vote : {e.vote_average}</span>

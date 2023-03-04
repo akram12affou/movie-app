@@ -30,12 +30,19 @@ gap:0.5rem;
   background-color: rgb(227, 231, 255);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 2%;
-  width: 20vw;
-  height: 40vh;
+  width: 30vw;
+  /* height: 40vh!; */
   
 }
-.similarmovie-img{
+.similarmovie-img div{
+display: flex;
+justify-content: center;
+}
+.similarmovie-img div img{
   width:30%;
+}
+.similarmovie-img div h1{
+ font-size: 10px;
 }
 .see{
   cursor: pointer;
@@ -68,4 +75,19 @@ gap:0.5rem;
 .cont{
   display: flex;
   align-items: center;
+}
+@media screen and (max-width :768px) {
+  .similarmovie{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(227, 231, 255);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 2%;
+    width: 40vw;
+    /* height: 40vh!; */
+    
+  }
 }
